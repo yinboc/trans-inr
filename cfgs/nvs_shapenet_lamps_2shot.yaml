@@ -1,0 +1,55 @@
+trainer: nvs_trainer
+
+train_dataset:
+  name: learnit_shapenet
+  args:
+    root_path: $load_root$/learnit_shapenet
+    category: lamps
+    split: train
+    views_rng: [0, 25]
+    n_support: 2
+    n_query: 1
+    repeat: 3
+  loader:
+    batch_size: 32
+    num_workers: 8
+
+test_dataset:
+  name: learnit_shapenet
+  args:
+    root_path: $load_root$/learnit_shapenet
+    category: lamps
+    split: test
+    n_support: 2
+    n_query: 1
+    repeat: 100
+  loader:
+    batch_size: 32
+    num_workers: 8
+
+model:
+  name: trans_inr
+  args:
+    tokenizer:
+      name: nvs_tokenizer
+      args: {input_size: 128, patch_size: 8}
+    hyponet:
+      name: hypo_nerf
+      args: {}
+    n_groups: 32
+    transformer_encoder:
+      name: transformer_encoder
+      args: {dim: 768, depth: 6, n_head: 12, head_dim: 64, ff_dim: 3072}
+
+train_points_per_ray: 128
+train_n_rays: 128
+render_ray_batch: 1024
+
+optimizer:
+  name: adam
+  args: {lr: 1.e-4}
+max_epoch: 1000
+adaptive_sample_epoch: 1
+
+eval_epoch: 10
+vis_epoch: 125

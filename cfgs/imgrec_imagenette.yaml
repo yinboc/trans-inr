@@ -1,0 +1,45 @@
+trainer: imgrec_trainer
+
+train_dataset:
+  name: imgrec_dataset
+  args:
+    imageset:
+      name: imagenette
+      args: {root_path: $load_root$/imagenette, split: train, augment: random_crop_178}
+    resize: 178
+  loader:
+    batch_size: 16
+    num_workers: 8
+
+test_dataset:
+  name: imgrec_dataset
+  args:
+    imageset:
+      name: imagenette
+      args: {root_path: $load_root$/imagenette, split: val, augment: none}
+    resize: 178
+  loader:
+    batch_size: 16
+    num_workers: 8
+
+model:
+  name: trans_inr
+  args:
+    tokenizer:
+      name: imgrec_tokenizer
+      args: {input_size: 178, patch_size: 9, padding: 1}
+    hyponet:
+      name: hypo_mlp
+      args: {in_dim: 2, out_dim: 3, out_bias: 0.5, depth: 5, hidden_dim: 256, use_pe: true, pe_dim: 128}
+    n_groups: 64
+    transformer_encoder:
+      name: transformer_encoder
+      args: {dim: 768, depth: 6, n_head: 12, head_dim: 64, ff_dim: 3072}
+
+optimizer:
+  name: adam
+  args: {lr: 1.e-4}
+max_epoch: 400
+
+eval_epoch: 10
+vis_epoch: 50

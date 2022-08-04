@@ -1,0 +1,20 @@
+trainer: nvs_evaluator
+
+test_dataset:
+  name: learnit_shapenet
+  args:
+    root_path: $load_root$/learnit_shapenet
+    category: lamps
+    split: test
+    n_support: 2
+    n_query: 1
+    repeat: 100
+  loader:
+    batch_size: 16
+    num_workers: 8
+
+eval_model: save/nvs_shapenet_lamps_2shot/epoch-last.pth
+# tto_steps: 100
+
+train_points_per_ray: 128
+render_ray_batch: 1024
