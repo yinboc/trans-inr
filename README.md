@@ -2,7 +2,7 @@
 
 This repository contains the official implementation for the following paper:
 
-[**Transformers as Meta-Learners for Implicit Neural Representations**]()
+[**Transformers as Meta-Learners for Implicit Neural Representations**](https://arxiv.org/abs/2208.02801)
 <br>
 [Yinbo Chen](https://yinboc.github.io/), [Xiaolong Wang](https://xiaolonw.github.io/)
 <br>
