@@ -8,6 +8,8 @@ This repository contains the official implementation for the following paper:
 <br>
 ECCV 2022
 
+<img src="https://user-images.githubusercontent.com/10364424/183021009-b0d15bf4-70ec-4402-8f17-0b26ecacc3f9.png" width="400">
+
 Project page: https://yinboc.github.io/trans-inr/.
 
 ```
