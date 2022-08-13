@@ -26,7 +26,7 @@ Project page: https://yinboc.github.io/trans-inr/.
 ### Environment
 - Python 3
 - Pytorch 1.12.0
-- yaml numpy tqdm imageio TensorboardX wandb einops
+- pyyaml numpy tqdm imageio TensorboardX wandb einops
 
 ### Data
 
